@@ -8,6 +8,8 @@ const CompletedList = document.getElementById("cont-completed");
 // Creamos la función que nos permite crear una nueva tarea 
 // Todas las etiquetas que vamos a crear parten de la maqueta HTML preexistente
 
+
+// Esta funcion solo crea la estructura del html , la deja en el limbo, aun no la inserta en la pagina 
 function createToDoItem(textoItem){
     // Creamos el nodo o elemento padre
     const item =document.createElement("div");
@@ -47,5 +49,38 @@ addbtn.addEventListener('click', ()=>{
         const newItem = createToDoItem(textoItem);
         ToDoList.appendChild(newItem);
         input.value="";
+        eventsToItem(newItem);
     }
+
+
 });
+
+// La siguiente funcion nos permitira agregar en funcionamiento principal sobre  las tareas es decir marcar la tarea como terminada o completada
+
+function eventsToItem(item){
+    // utilizamos query selector para capturar el input y el button que esta dentro del item
+    const checkbox = item.querySelector('input');
+    const deleteBtn = item.querySelector('button'); 
+    
+    // Completar la tarea o marcarla como terminada
+
+    checkbox.addEventListener('change', ()=>{
+        if(checkbox.checked){
+        CompletedList.appendChild(item);
+
+        }else{
+            ToDoList.appendChild(item);
+
+        }
+    })
+
+    // eliminar una tarea
+
+    deleteBtn.addEventListener('click', ()=>{
+        item.remove();
+    })
+
+
+}
+
+
