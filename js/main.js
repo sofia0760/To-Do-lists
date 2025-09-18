@@ -79,8 +79,21 @@ function eventsToItem(item){
     deleteBtn.addEventListener('click', ()=>{
         item.remove();
     })
-
-
 }
+const btnstyles = document.getElementById('change-styles');
+btnstyles.addEventListener('click', ()=>{
+    const linkCss= document.getElementById('enlace-estilos');
+
+    if(linkCss.getAttribute('href')==='css/styles.css'){
+        linkCss.setAttribute('href','css/styles-dia.css');
+        btnstyles.textContent = 'Modo noche';
+
+    }else{
+        linkCss.setAttribute('href','css/styles.css');
+        btnstyles.textContent = 'Modo dia'
+
+    };
+    
+});
 
 
