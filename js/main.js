@@ -1,6 +1,6 @@
 // Creamos las constantes globales para los elementos principales 
 
-const input =document.getElementById("to-do-input");
+const input = document.getElementById("to-do-input");
 const addbtn = document.getElementById("add-btn");
 const ToDoList = document.getElementById("cont-to-do-list");
 const CompletedList = document.getElementById("cont-completed");
@@ -10,24 +10,24 @@ const CompletedList = document.getElementById("cont-completed");
 
 
 // Esta funcion solo crea la estructura del html , la deja en el limbo, aun no la inserta en la pagina 
-function createToDoItem(textoItem){
+function createToDoItem(textoItem) {
     // Creamos el nodo o elemento padre
-    const item =document.createElement("div");
+    const item = document.createElement("div");
     item.classList.add("item-to-do");
 
     // Creamos el nodo o elemento hijo y le agregamos el nodo checkbox
-    const checkbox=document.createElement("input");
-    checkbox.type="checkbox";
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
 
     // Creamos el siguiente nodo hijo (párrafo). 
     // A este párrafo le asignamos el valor del argumento de la función, 
     // es decir, lo que escribe el usuario en el campo
-    const p =document.createElement("p");
-    p.textContent=textoItem;
+    const p = document.createElement("p");
+    p.textContent = textoItem;
 
     // Creamos el último nodo hijo: el botón de eliminar
-    const deleteBtn=document.createElement("button");
-    deleteBtn.textContent="x";
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Eliminar";
 
     // Ensamblamos dentro del nodo padre sus nodos hijos, es decir, la estructura de la tarea
     item.appendChild(checkbox);
@@ -36,19 +36,19 @@ function createToDoItem(textoItem){
 
     // Utilizamos return para devolver el elemento creado, ya que lo usaremos en otra función más adelante
     return item;
-} 
+}
 
 // Detectamos el evento click sobre el botón "Agregar" con un event listener
 // A partir de este evento se agregará la tarea dentro del contenedor cont-to-do-list
 
-addbtn.addEventListener('click', ()=>{
-    const textoItem=input.value.trim();
-    if (textoItem=="") {
+addbtn.addEventListener('click', () => {
+    const textoItem = input.value.trim();
+    if (textoItem == "") {
         alert("No se puede crear una tarea vacia")
     } else {
         const newItem = createToDoItem(textoItem);
         ToDoList.appendChild(newItem);
-        input.value="";
+        input.value = "";
         eventsToItem(newItem);
     }
 
@@ -57,18 +57,18 @@ addbtn.addEventListener('click', ()=>{
 
 // La siguiente funcion nos permitira agregar en funcionamiento principal sobre  las tareas es decir marcar la tarea como terminada o completada
 
-function eventsToItem(item){
+function eventsToItem(item) {
     // utilizamos query selector para capturar el input y el button que esta dentro del item
     const checkbox = item.querySelector('input');
-    const deleteBtn = item.querySelector('button'); 
-    
+    const deleteBtn = item.querySelector('button');
+
     // Completar la tarea o marcarla como terminada
 
-    checkbox.addEventListener('change', ()=>{
-        if(checkbox.checked){
-        CompletedList.appendChild(item);
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            CompletedList.appendChild(item);
 
-        }else{
+        } else {
             ToDoList.appendChild(item);
 
         }
@@ -76,24 +76,34 @@ function eventsToItem(item){
 
     // eliminar una tarea
 
-    deleteBtn.addEventListener('click', ()=>{
+    deleteBtn.addEventListener('click', () => {
         item.remove();
     })
 }
-const btnstyles = document.getElementById('change-styles');
-btnstyles.addEventListener('click', ()=>{
-    const linkCss= document.getElementById('enlace-estilos');
 
-    if(linkCss.getAttribute('href')==='css/styles.css'){
-        linkCss.setAttribute('href','css/styles-dia.css');
+const btnstyles = document.getElementById('change-styles');
+btnstyles.addEventListener('click', () => {
+    const linkCss = document.getElementById('enlace-estilos');
+
+    if (linkCss.getAttribute('href') === 'css/styles.css') {
+        linkCss.setAttribute('href', 'css/styles-dia.css');
         btnstyles.textContent = 'Modo noche';
 
-    }else{
-        linkCss.setAttribute('href','css/styles.css');
+    } else {
+        linkCss.setAttribute('href', 'css/styles.css');
         btnstyles.textContent = 'Modo dia'
 
     };
-    
 });
+
+// Detectamos la tecla Enter en el input
+input.addEventListener('keydown', (e) => {
+    if (e.key === "Enter") {   // Si la tecla presionada es Enter
+           // Evita que el formulario se recargue
+        addbtn.click();        // Simula un click en el botón "Agregar"
+    }
+});
+
+  
 
 

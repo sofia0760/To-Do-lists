@@ -95,6 +95,7 @@ form {
 .item-to-do p {
   margin-left: 10px;
   flex: 1;
+  word-break: break-word;
 }
 
 .item-to-do input[type="checkbox"] {
