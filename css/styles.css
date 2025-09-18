@@ -1,0 +1,120 @@
+/* ===== Reset Básico ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===== Estructura General ===== */
+body {
+  background: #edecec;
+  color: #402f2f;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+}
+
+/* ===== Contenedor Principal ===== */
+#global-content {
+  background: #92dbe2;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #273c75;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin: 20px 0 10px;
+  color: #353b48;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #dcdde1;
+  margin: 15px 0;
+}
+
+/* ===== Formulario ===== */
+form {
+  display: flex;
+  gap: 10px;
+}
+
+#to-do-input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #dcdde1;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+#to-do-input:focus {
+  border-color: #0097e6;
+  box-shadow: 0 0 5px rgba(0,151,230,0.3);
+}
+
+#add-btn {
+  background: #0097e6;
+  border: none;
+  color: #fff;
+  padding: 0 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 1.2rem;
+}
+
+#add-btn:hover {
+  background: #0984e3;
+}
+
+/* ===== Items To-Do ===== */
+.item-to-do {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f1f2f6;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.item-to-do p {
+  margin-left: 10px;
+  flex: 1;
+}
+
+.item-to-do input[type="checkbox"] {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.item-to-do button {
+  background: #e84118;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.item-to-do button:hover {
+  background: #c23616;
+}
+
+/* ===== Completed List ===== */
